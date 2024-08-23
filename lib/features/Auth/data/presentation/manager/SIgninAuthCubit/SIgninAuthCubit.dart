@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/features/Auth/data/domain/model/userModel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +34,17 @@ class AuthCubit extends Cubit<AuthState> {
 
     response.fold((l) {
       emit(AuthError(error: l.errMessage));
-    }, (r) {
+    }, (r) async {
+      await FirebaseFirestore.instance.collection('USERS').doc((id)).set({
+        'email': email,
+        'f_name': f_name,
+        'L_name': L_name,
+        'id': id,
+        'gender': gender,
+        'wight': wight,
+        'hight': hight,
+        'date': date
+      });
       user = r;
       emit(AuthSuccess(usermodel: r));
     });

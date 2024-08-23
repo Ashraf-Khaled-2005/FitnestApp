@@ -1,9 +1,12 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/features/Auth/data/presentation/manager/loginemail_pass_cubit/loginemail_pass_cubit.dart';
 import 'package:fitness_app/features/Auth/data/presentation/view/LoginView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../../../core/widget/buttom.dart';
 import '../../../../../../core/widget/textfield.dart';
@@ -115,7 +118,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 children: [
                   CustomLoginMethodContainuer(
                     logo: 'assets/image/google.png',
-                    onTap: () {},
+                    onTap: () async {
+                      final uuid = Uuid().v4();
+                      var user = await signInWithGoogle();
+                    },
                   ),
                   const SizedBox(
                     width: 30,
@@ -165,5 +171,25 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         )
       ],
     );
+  }
+
+  Future<UserCredential?> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    if (googleUser != null) {
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } else {}
   }
 }

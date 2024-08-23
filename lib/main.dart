@@ -7,6 +7,8 @@ import 'package:fitness_app/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'features/exercises/presentation/view/exercisesview.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -31,7 +33,7 @@ class FitnessApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Signup(),
+        home: ExercisesView(),
       ),
     );
   }

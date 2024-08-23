@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:date_format_field/date_format_field.dart';
 import 'package:fitness_app/core/widget/buttom.dart';
@@ -51,19 +52,6 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
           SizedBox(
             height: 15,
           ),
-          // CustomTextField(
-          //   text: "Gender",
-          //   icon: Icons.person,
-          //   validator: (value) {
-          //     if (value!.isEmpty && (value != "male" || value != "female")) {
-          //       return "please enter (Male - Female)";
-          //     }
-          //   },
-          //   onSaved: (value) {
-          //     gender = value!;
-          //   },
-          // ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -176,7 +164,7 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
           customButtom(
               text: "Go to Home",
               w: MediaQuery.of(context).size.width,
-              ontap: () {
+              ontap: () async {
                 final uuid = Uuid().v4();
                 log(keyboardHeight.toString());
                 if (key.currentState!.validate()) {
