@@ -1,4 +1,5 @@
 import 'package:fitness_app/features/exercises/data/model/exercise_model.dart';
+import 'package:fitness_app/features/exercises/presentation/view/exercisescategoryview.dart';
 import 'package:flutter/material.dart';
 
 class CustomListitemExercises extends StatelessWidget {
@@ -42,25 +43,35 @@ class CustomListitemExercises extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Text(
-                  "View More",
-                  style: TextStyle(
-                      color: Color(0xff92A3FD),
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      fontFamily: 'Poppins'),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Exercisescategoryview(
+                                models: items,
+                              )));
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Text(
+                    "View More",
+                    style: TextStyle(
+                        color: Color(0xff92A3FD),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        fontFamily: 'Poppins'),
+                  ),
                 ),
               )
             ],
           ),
-          Image.asset(
-            'assets/image/image.png',
+          Image.network(
+            items[0].gifUrl!,
             width: 100,
             height: 100,
           )
