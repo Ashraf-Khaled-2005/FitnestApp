@@ -1,4 +1,5 @@
 import 'package:fitness_app/features/Auth/data/presentation/manager/loginemail_pass_cubit/loginemail_pass_cubit.dart';
+import 'package:fitness_app/features/Home/presentation/view/Home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -27,11 +28,11 @@ class Loginview extends StatelessWidget {
                   content: Text("donesada"),
                 ),
               );
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => ProfileContinue(),
-              //     ));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeView(),
+                  ));
             }
           },
           builder: (context, state) {

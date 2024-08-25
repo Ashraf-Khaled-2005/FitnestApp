@@ -14,7 +14,6 @@ class AuthCubit extends Cubit<AuthState> {
       {required String email,
       required String f_name,
       required String L_name,
-      required String id,
       required String pass,
       required String gender,
       required String wight,
@@ -25,7 +24,6 @@ class AuthCubit extends Cubit<AuthState> {
         email: email,
         f_name: f_name,
         L_name: L_name,
-        id: id,
         pass: pass,
         gender: gender,
         wight: wight,
@@ -35,11 +33,14 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((l) {
       emit(AuthError(error: l.errMessage));
     }, (r) async {
-      await FirebaseFirestore.instance.collection('USERS').doc((id)).set({
+      await FirebaseFirestore.instance
+          .collection('USERS')
+          .doc((FirebaseAuth.instance.currentUser!.uid))
+          .set({
         'email': email,
         'f_name': f_name,
         'L_name': L_name,
-        'id': id,
+        'id': FirebaseAuth.instance.currentUser!.uid,
         'gender': gender,
         'wight': wight,
         'hight': hight,

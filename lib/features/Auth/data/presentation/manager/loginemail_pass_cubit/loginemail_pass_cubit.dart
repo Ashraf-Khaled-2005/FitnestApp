@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:fitness_app/features/Auth/data/domain/auth_repo.dart';
+import 'package:fitness_app/features/Auth/data/domain/model/userModel.dart';
 import 'package:meta/meta.dart';
 
 part 'loginemail_pass_state.dart';
 
 class LoginemailPassCubit extends Cubit<LoginemailPassState> {
+  late Usermodel usermodel;
   final AuthRepo authRepo;
   LoginemailPassCubit(this.authRepo) : super(LoginemailPassInitial());
 

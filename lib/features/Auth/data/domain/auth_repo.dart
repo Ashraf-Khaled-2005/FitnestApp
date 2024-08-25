@@ -8,7 +8,6 @@ abstract class AuthRepo {
       {required String email,
       required String f_name,
       required String L_name,
-      required String id,
       required String pass,
       required String gender,
       required String wight,

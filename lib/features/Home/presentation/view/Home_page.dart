@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/core/widget/buttom.dart';
 import 'package:fitness_app/features/Auth/data/domain/model/userModel.dart';
 import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
+import 'package:fitness_app/features/Home/presentation/manager/cubit/getuserdata_cubit.dart';
 import 'package:fitness_app/features/exercises/presentation/view/exercisesview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +12,10 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: HomeViewBody());
+    return BlocProvider(
+      create: (context) => GetuserdataCubit()..getuserdata(),
+      child: Scaffold(body: HomeViewBody()),
+    );
   }
 }
 
@@ -19,19 +24,33 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CustomProfileView(user: context.read<AuthCubit>().user),
-        customButtom(
-          w: double.infinity,
-          ontap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ExercisesView()),
-            );
-          },
-        ),
-      ],
+    return BlocBuilder<GetuserdataCubit, GetuserdataState>(
+      builder: (context, state) {
+        if (state is Getuserdataloading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is Getuserdatasucess) {
+          Usermodel user = state.user;
+          return Column(
+            children: [
+              CustomProfileView(user: user),
+              customButtom(
+                w: double.infinity,
+                ontap: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ExercisesView()),
+                  );
+                },
+              ),
+            ],
+          );
+        } else if (state is Getuserdatafail) {
+          return Center(child: Text('Error: ${state.err}'));
+        } else {
+          return const Center(child: Text('Unexpected state!'));
+        }
+      },
     );
   }
 }

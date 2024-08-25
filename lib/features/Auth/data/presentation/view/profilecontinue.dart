@@ -2,6 +2,7 @@ import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCu
 import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubitstate.dart';
 import 'package:fitness_app/features/Home/presentation/view/Home_page.dart';
 import 'package:fitness_app/features/exercises/presentation/view/exercisesview.dart';
+import 'package:fitness_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -33,7 +34,7 @@ class ProfileContinue extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HomeView(),
+                  builder: (context) => AuthStream(),
                 ));
           }
         },

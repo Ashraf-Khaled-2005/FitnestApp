@@ -145,26 +145,7 @@ class _SignupBodyState extends State<SignupBody> {
               const SizedBox(
                 height: 20,
               ),
-              Image.asset('assets/image/or.png'),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomLoginMethodContainuer(
-                    logo: 'assets/image/google.png',
-                    onTap: () {},
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  CustomLoginMethodContainuer(
-                    logo: 'assets/image/Vector.png',
-                    onTap: () {},
-                  ),
-                ],
-              ),
+            
               const SizedBox(
                 height: 30,
               ),

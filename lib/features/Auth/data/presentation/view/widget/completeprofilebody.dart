@@ -174,7 +174,6 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                       email: widget.email,
                       f_name: widget.f_name,
                       L_name: widget.l_name,
-                      id: uuid,
                       pass: widget.pass,
                       gender: _selectedGender,
                       wight: wight,

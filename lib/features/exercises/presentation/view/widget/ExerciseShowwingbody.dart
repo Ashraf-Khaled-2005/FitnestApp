@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fitness_app/core/widget/buttom.dart';
 import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
+import 'package:fitness_app/features/Home/presentation/manager/cubit/getuserdata_cubit.dart';
 import 'package:fitness_app/features/exercises/data/model/exercisedone.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -162,7 +163,7 @@ class _ExerciseShowwingbodyState extends State<ExerciseShowwingbody> {
                       'id': uuid,
                       'exerciseid': widget.model.id,
                       'indexes': indexs,
-                      'userid': context.read<AuthCubit>().user.id
+                      'userid': context.read<GetuserdataCubit>().usermodel.id
                     });
 
                     setState(() {
