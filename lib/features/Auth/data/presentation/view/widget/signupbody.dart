@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../../../../../core/widget/buttom.dart';
 import '../../../../../../core/widget/textfield.dart';
-import '../Gender_login.dart';
+import '../profilecontinue.dart';
 import '../LoginView.dart';
 import 'logincontainuer.dart';
 

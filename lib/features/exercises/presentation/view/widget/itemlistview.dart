@@ -13,9 +13,9 @@ class CustomListitemExercises extends StatelessWidget {
       height: 132,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          gradient:
-              LinearGradient(colors: [Color(0xff92A3FD), Color(0xff9DCEFF)])),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          gradient: const LinearGradient(
+              colors: [Color(0xff92A3FD), Color(0xff9DCEFF)])),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -23,13 +23,13 @@ class CustomListitemExercises extends StatelessWidget {
             children: [
               Text(
                 "${items[0].bodyPart}",
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w700),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
@@ -40,7 +40,7 @@ class CustomListitemExercises extends StatelessWidget {
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w400),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               InkWell(
@@ -53,12 +53,13 @@ class CustomListitemExercises extends StatelessWidget {
                               )));
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Text(
+                  child: const Text(
                     "View More",
                     style: TextStyle(
                         color: Color(0xff92A3FD),

@@ -43,14 +43,14 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
       autovalidateMode: auto,
       child: Column(
         children: [
-          Expanded(
-            child: OnBoardingPageviewItem(
+          const Expanded(
+            child: const OnBoardingPageviewItem(
               image: Assets.assetsImageGenderPage,
               subtitle: "Let’s complete your profile",
               title: 'It will help us to know more about you!',
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Row(
@@ -71,7 +71,7 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                   },
                 ),
               ),
-              CustomTitleCompleteProfile(
+              const CustomTitleCompleteProfile(
                 title: "KG",
               )
             ],
@@ -94,7 +94,7 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                   },
                 ),
               ),
-              CustomTitleCompleteProfile(
+              const CustomTitleCompleteProfile(
                 title: "CM",
               )
             ],
@@ -126,7 +126,7 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                 fillColor: const Color(0xffF7F8F8),
                 filled: true,
                 hintText: "Your Date"),
-            type: DateFormatType.type3,
+            type: DateFormatType.type1,
             onComplete: (p0) {},
           ),
           Row(
@@ -159,13 +159,14 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           customButtom(
               text: "Go to Home",
               w: MediaQuery.of(context).size.width,
               ontap: () async {
+                final uuid = const Uuid().v4();
                 log(keyboardHeight.toString());
                 if (key.currentState!.validate()) {
                   key.currentState!.save();
@@ -173,7 +174,7 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                       email: widget.email,
                       f_name: widget.f_name,
                       L_name: widget.l_name,
-                      id: FirebaseAuth.instance.currentUser!.uid,
+                      id: uuid,
                       pass: widget.pass,
                       gender: _selectedGender,
                       wight: wight,

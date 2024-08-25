@@ -10,4 +10,16 @@ class Usermodel {
       required this.wight,
       required this.hight,
       required this.date});
+
+  factory Usermodel.fromdoc(Map<String, dynamic> data) {
+    return Usermodel(
+        f_name: data['f_name'],
+        L_name: data['L_name'],
+        email: data['email'],
+        id: data['id'],
+        gender: data['gender'],
+        wight: data['wight'],
+        hight: data['hight'],
+        date: data['date']);
+  }
 }

@@ -1,6 +1,6 @@
 import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
 import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubitstate.dart';
-import 'package:fitness_app/features/Auth/data/presentation/view/Gender_login.dart';
+import 'package:fitness_app/features/Auth/data/presentation/view/profilecontinue.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';

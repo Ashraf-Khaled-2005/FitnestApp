@@ -18,14 +18,14 @@ class ExerciseShowwing extends StatelessWidget {
           listener: (context, state) {
             if (state is GetexerciseindesesLoaded) {
             } else if (state is GetexerciseindesesError) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("data"),
               ));
             }
           },
           builder: (context, state) {
             if (state is GetexerciseindesesLoading) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is GetexerciseindesesLoaded) {
@@ -34,7 +34,7 @@ class ExerciseShowwing extends StatelessWidget {
                 done: state.exercise,
               );
             } else if (state is GetexerciseindesesError) {
-              return Center(
+              return const Center(
                 child: Text("error"),
               );
             } else {

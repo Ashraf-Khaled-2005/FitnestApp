@@ -6,6 +6,7 @@ import 'package:fitness_app/features/Auth/data/presentation/manager/loginemail_p
 import 'package:fitness_app/features/Auth/data/presentation/view/signup.dart';
 import 'package:fitness_app/features/exercises/data/repo/exerciserepoimpl.dart';
 import 'package:fitness_app/features/exercises/presentation/manager/indesesCubit/getexerciseindeses_cubit.dart';
+import 'package:fitness_app/features/onboarding/presentation/view/splash.dart';
 import 'package:fitness_app/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +41,7 @@ class FitnessApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: ExercisesView(),
+        home: SplashScreen(),
       ),
     );
   }

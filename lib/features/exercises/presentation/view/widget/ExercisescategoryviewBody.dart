@@ -52,7 +52,7 @@ class ExercisescategoryviewBody extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(16),

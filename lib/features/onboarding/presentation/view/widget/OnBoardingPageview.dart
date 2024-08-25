@@ -11,7 +11,7 @@ class OnBoardingPageview extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageView(
       controller: controller,
-      children: [
+      children: const [
         OnBoardingPageviewItem(
           image: Assets.assetsImageFrame,
           title: 'Track Your Goal',
@@ -29,6 +29,7 @@ class OnBoardingPageview extends StatelessWidget {
             subtitle:
                 "Let's start a healthy lifestyle with us, we can determine your diet every day. healthy eating is fun"),
         OnBoardingPageviewItem(
+            islast: true,
             image: Assets.assetsImageFrame3,
             title: 'Improve Sleep  Quality',
             subtitle:

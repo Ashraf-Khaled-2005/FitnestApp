@@ -1,5 +1,7 @@
 import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
 import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubitstate.dart';
+import 'package:fitness_app/features/Home/presentation/view/Home_page.dart';
+import 'package:fitness_app/features/exercises/presentation/view/exercisesview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -28,16 +30,11 @@ class ProfileContinue extends StatelessWidget {
               ),
             );
           } else if (state is AuthSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("done"),
-              ),
-            );
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //       builder: (context) => ProfileContinue(),
-            //     ));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeView(),
+                ));
           }
         },
         builder: (context, state) {

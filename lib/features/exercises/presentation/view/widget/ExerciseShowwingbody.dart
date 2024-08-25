@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fitness_app/core/widget/buttom.dart';
+import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
 import 'package:fitness_app/features/exercises/data/model/exercisedone.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../data/model/exercise_model.dart';
@@ -153,12 +155,14 @@ class _ExerciseShowwingbodyState extends State<ExerciseShowwingbody> {
                     final uuid = const Uuid().v4();
                     await FirebaseFirestore.instance
                         .collection("Exercises")
-                        .doc(getid(id: widget.model.id!, userid: "1"))
+                        .doc(getid(
+                            id: widget.model.id!,
+                            userid: context.read<AuthCubit>().user.id))
                         .set({
                       'id': uuid,
                       'exerciseid': widget.model.id,
                       'indexes': indexs,
-                      'userid': '1'
+                      'userid': context.read<AuthCubit>().user.id
                     });
 
                     setState(() {
