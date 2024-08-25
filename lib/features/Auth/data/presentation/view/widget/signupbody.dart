@@ -119,19 +119,20 @@ class _SignupBodyState extends State<SignupBody> {
               customButtom(
                   w: w,
                   ontap: () async {
-                    final uuid = Uuid().v4();
                     if (key.currentState!.validate()) {
                       key.currentState!.save();
 
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProfileContinue(
-                                    pass: pass,
-                                    email: email,
-                                    f_name: f_name,
-                                    l_name: L_name,
-                                  )));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfileContinue(
+                            pass: pass,
+                            email: email,
+                            f_name: f_name,
+                            l_name: L_name,
+                          ),
+                        ),
+                      );
 
                       log("done");
                     } else {

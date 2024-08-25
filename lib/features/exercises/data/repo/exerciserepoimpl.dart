@@ -1,11 +1,14 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:fitness_app/core/failures.dart';
 import 'package:fitness_app/features/exercises/data/model/exercise_model.dart';
+import 'package:fitness_app/features/exercises/presentation/view/widget/ExerciseShowwingbody.dart';
 
 import '../../domain/repo/exerciserepo.dart';
+import '../model/exercisedone.dart';
 
 class Exerciserepoimple extends ExerciseRepo {
   final Dio dio;
@@ -38,6 +41,32 @@ class Exerciserepoimple extends ExerciseRepo {
       return right(list);
     } on DioException catch (e) {
       return left(ServerFailure.fromDioError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Exercisedone?>> getexercisesDone(
+      {required String id, required String userid}) async {
+    try {
+      var data = await FirebaseFirestore.instance
+          .collection('Exercises')
+          .doc(getid(id: id, userid: userid))
+          .get();
+
+      var result = data.data() as Map<String, dynamic>?;
+
+      if (result != null) {
+        Exercisedone exercise = Exercisedone(
+            ExerciseId: result['exerciseid'],
+            indexes: result['indexes'],
+            id: result['id'],
+            userid: result['userid']);
+        return right(exercise);
+      } else {
+        return right(null);
+      }
+    } on Exception catch (e) {
+      return left(ServerFailure(e.toString()));
     }
   }
 }

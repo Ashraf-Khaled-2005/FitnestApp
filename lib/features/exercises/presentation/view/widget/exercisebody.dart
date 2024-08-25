@@ -11,15 +11,15 @@ class ExercisesViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverAppBar(
-          title: const Text(
+        const SliverAppBar(
+          title: Text(
             "WorkoutTracker",
             style: TextStyle(
                 fontSize: 24, fontWeight: FontWeight.w700, color: Colors.black),
           ),
           centerTitle: true,
         ),
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -1,8 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness_app/features/Auth/data/auth_repo_imlp.dart';
 import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
 import 'package:fitness_app/features/Auth/data/presentation/manager/loginemail_pass_cubit/loginemail_pass_cubit.dart';
 import 'package:fitness_app/features/Auth/data/presentation/view/signup.dart';
+import 'package:fitness_app/features/exercises/data/repo/exerciserepoimpl.dart';
+import 'package:fitness_app/features/exercises/presentation/manager/indesesCubit/getexerciseindeses_cubit.dart';
 import 'package:fitness_app/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,6 +32,10 @@ class FitnessApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LoginemailPassCubit(AuthRepoImpl()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              GetexerciseindesesCubit(Exerciserepoimple(dio: Dio())),
         ),
       ],
       child: const MaterialApp(

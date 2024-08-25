@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:date_format_field/date_format_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/core/widget/buttom.dart';
 import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
 import 'package:flutter/material.dart';
@@ -165,7 +166,6 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
               text: "Go to Home",
               w: MediaQuery.of(context).size.width,
               ontap: () async {
-                final uuid = Uuid().v4();
                 log(keyboardHeight.toString());
                 if (key.currentState!.validate()) {
                   key.currentState!.save();
@@ -173,7 +173,7 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                       email: widget.email,
                       f_name: widget.f_name,
                       L_name: widget.l_name,
-                      id: uuid,
+                      id: FirebaseAuth.instance.currentUser!.uid,
                       pass: widget.pass,
                       gender: _selectedGender,
                       wight: wight,
