@@ -24,7 +24,7 @@ class ProfileContinue extends StatelessWidget {
         body: Padding(
       padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 15),
       child: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is AuthError) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -32,13 +32,12 @@ class ProfileContinue extends StatelessWidget {
               ),
             );
           } else if (state is AuthSuccess) {
-            context.read<GetuserdataCubit>().getuserdata();
-            Navigator.push(
+            Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => AuthStream(),
                 ));
-          }
+          } else {}
         },
         builder: (context, state) {
           return ModalProgressHUD(

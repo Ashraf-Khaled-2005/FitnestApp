@@ -162,6 +162,10 @@ class _ExerciseShowwingbodyState extends State<ExerciseShowwingbody> {
                             userid:
                                 context.read<GetuserdataCubit>().usermodel.id))
                         .set({
+                      'instractionlength': widget.model.instructions!.length,
+                      'name': widget.model.name,
+                      'category': widget.model.bodyPart,
+                      'image': widget.model.gifUrl,
                       'id': uuid,
                       'exerciseid': widget.model.id,
                       'indexes': indexs,

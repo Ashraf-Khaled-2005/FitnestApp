@@ -10,7 +10,7 @@ class GetuserdataCubit extends Cubit<GetuserdataState> {
   late Usermodel usermodel;
   GetuserdataCubit() : super(GetuserdataInitial());
 
-  getuserdata() async {
+  Future<void> getuserdata() async {
     try {
       emit(Getuserdataloading());
       var result = await FirebaseFirestore.instance

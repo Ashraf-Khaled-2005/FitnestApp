@@ -15,13 +15,17 @@ import 'package:fitness_app/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'features/exercises/presentation/view/exercisesview.dart';
+import 'core/service/local_notication_Service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  Future.wait([
+    NotificationService.init(),
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    )
+  ]);
+
   runApp(const FitnessApp());
 }
 
@@ -58,6 +62,9 @@ class FitnessApp extends StatelessWidget {
 }
 
 class AuthStream extends StatelessWidget {
+  final bool isgoogle;
+
+  const AuthStream({super.key, this.isgoogle = false});
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -75,8 +82,10 @@ class AuthStream extends StatelessWidget {
                 child: Text('An error occurred. Please try again later.')),
           );
         } else if (snapshot.hasData) {
-          // User is signed in
-          return HomeView();
+          context.read<GetuserdataCubit>().getuserdata();
+          return HomeView(
+            isgoogle: isgoogle,
+          );
         } else if (snapshot.connectionState == ConnectionState.active) {
           // The stream is active but no user is signed in (i.e., user is not logged in)
           return Signup();

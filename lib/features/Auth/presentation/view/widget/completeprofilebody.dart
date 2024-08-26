@@ -8,7 +8,6 @@ import 'package:fitness_app/features/Auth/presentation/manager/SIgninAuthCubit/S
 import 'package:fitness_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../../../../core/utils/Appimages.dart';
 import '../../../../../core/widget/textfield.dart';
@@ -39,15 +38,13 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
   late String date;
   @override
   Widget build(BuildContext context) {
-    double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
-
     return Form(
       key: key,
       autovalidateMode: auto,
       child: Column(
         children: [
           const Expanded(
-            child: const OnBoardingPageviewItem(
+            child: OnBoardingPageviewItem(
               image: Assets.assetsImageGenderPage,
               subtitle: "Let’s complete your profile",
               title: 'It will help us to know more about you!',
@@ -129,7 +126,7 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                 fillColor: const Color(0xffF7F8F8),
                 filled: true,
                 hintText: "Your Date"),
-            type: DateFormatType.type1,
+            type: DateFormatType.type2,
             onComplete: (p0) {},
           ),
           Row(
@@ -169,12 +166,10 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
               text: "Go to Home",
               w: MediaQuery.of(context).size.width,
               ontap: () async {
-                final uuid = const Uuid().v4();
-                log(keyboardHeight.toString());
                 if (key.currentState!.validate()) {
                   key.currentState!.save();
-                  !widget.isgoogle
-                      ? context.read<AuthCubit>().SigninAuth(
+                  !(widget.isgoogle)
+                      ? await context.read<AuthCubit>().SigninAuth(
                           email: widget.email,
                           f_name: widget.f_name,
                           L_name: widget.l_name,
@@ -196,8 +191,14 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                           'hight': height,
                           'date': date
                         });
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => AuthStream()));
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AuthStream(
+                        isgoogle: widget.isgoogle,
+                      ),
+                    ),
+                  );
                 } else {
                   auto = AutovalidateMode.always;
                   setState(() {});

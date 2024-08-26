@@ -40,6 +40,7 @@ class AuthCubit extends Cubit<AuthState> {
         'email': email,
         'f_name': f_name,
         'L_name': L_name,
+        'latestExercis': [],
         'id': FirebaseAuth.instance.currentUser!.uid,
         'gender': gender,
         'wight': wight,

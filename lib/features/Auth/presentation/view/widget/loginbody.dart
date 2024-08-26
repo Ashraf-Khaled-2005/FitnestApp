@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:fitness_app/features/Auth/presentation/manager/cubit/loginwithgoogle_cubit.dart';
 import 'package:fitness_app/features/Auth/presentation/manager/loginemail_pass_cubit/loginemail_pass_cubit.dart';
 import 'package:fitness_app/features/Auth/presentation/view/profilecontinue.dart';
 import 'package:fitness_app/features/Home/presentation/manager/cubit/getuserdata_cubit.dart';
 import 'package:fitness_app/features/Home/presentation/view/Home_page.dart';
+import 'package:fitness_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,21 +37,21 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Hey there,',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Poppins'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                Text(
+                const Text(
                   'Welcome Back',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 CustomTextField(
@@ -63,7 +66,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   icon: Icons.email,
                   text: "Email",
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 CustomTextField(
@@ -115,11 +118,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   BlocListener<LoginwithgoogleCubit, LoginwithgoogleState>(
-                    listener: (context, state) {
+                    listener: (context, state) async {
                       if (state is Loginwithgooglesuccess) {
                         if (state
                             .usercredential!.additionalUserInfo!.isNewUser) {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ProfileContinue(
@@ -134,10 +137,20 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomeView(),
+                              builder: (context) => AuthStream(
+                                isgoogle: true,
+                              ),
                             ),
                           );
                         }
+                      } else if (state is Loginwithgooglefailure) {
+                        // Show a snackbar with the error message
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                              content:
+                                  Text('Google Login Failed: ${state.err}')),
+                        );
+                        log(state.err); // Optional: keep logging for debugging
                       }
                     },
                     child: CustomLoginMethodContainuer(
@@ -146,7 +159,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         await context
                             .read<LoginwithgoogleCubit>()
                             .LoginWithGoogle();
-                        await context.read<GetuserdataCubit>().getuserdata();
                       },
                     ),
                   ),

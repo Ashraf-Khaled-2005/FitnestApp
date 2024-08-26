@@ -1,9 +1,4 @@
-import 'package:fitness_app/features/Auth/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
-import 'package:fitness_app/features/Auth/presentation/manager/SIgninAuthCubit/SIgninAuthCubitstate.dart';
-import 'package:fitness_app/features/Auth/presentation/view/profilecontinue.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'widget/signupbody.dart';
 
 class Signup extends StatelessWidget {
