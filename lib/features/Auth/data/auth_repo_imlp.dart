@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/core/failures.dart';
-import 'package:fitness_app/features/Auth/data/domain/auth_repo.dart';
-import 'package:fitness_app/features/Auth/data/domain/model/userModel.dart';
+import 'package:fitness_app/features/Auth/domain/auth_repo.dart';
+import 'package:fitness_app/features/Auth/domain/model/userModel.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepoImpl extends AuthRepo {
   @override
@@ -59,6 +60,33 @@ class AuthRepoImpl extends AuthRepo {
       } else {
         return left(ServerFailure('please try again'));
       }
+    }
+  }
+
+  @override
+  Future<Either<Failure, (UserCredential?, GoogleSignInAccount?)>>
+      LoginwithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    if (googleUser != null) {
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      return (right((
+        await FirebaseAuth.instance.signInWithCredential(credential),
+        googleUser
+      )));
+    } else {
+      return left(ServerFailure("error with google"));
     }
   }
 }

@@ -1,21 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/core/widget/buttom.dart';
-import 'package:fitness_app/features/Auth/data/domain/model/userModel.dart';
-import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
+import 'package:fitness_app/features/Auth/domain/model/userModel.dart';
 import 'package:fitness_app/features/Home/presentation/manager/cubit/getuserdata_cubit.dart';
 import 'package:fitness_app/features/exercises/presentation/view/exercisesview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  final bool isgoogle;
+  const HomeView({super.key, this.isgoogle = false});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetuserdataCubit()..getuserdata(),
-      child: Scaffold(body: HomeViewBody()),
-    );
+    return Scaffold(body: HomeViewBody());
   }
 }
 

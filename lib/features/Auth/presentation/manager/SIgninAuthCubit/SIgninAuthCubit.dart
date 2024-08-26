@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness_app/features/Auth/data/domain/model/userModel.dart';
+import 'package:fitness_app/features/Auth/domain/model/userModel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/auth_repo.dart';

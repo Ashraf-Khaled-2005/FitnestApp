@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:fitness_app/features/Auth/data/domain/auth_repo.dart';
-import 'package:fitness_app/features/Auth/data/domain/model/userModel.dart';
+import 'package:fitness_app/features/Auth/domain/auth_repo.dart';
+import 'package:fitness_app/features/Auth/domain/model/userModel.dart';
 import 'package:meta/meta.dart';
 
 part 'loginemail_pass_state.dart';

@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../../../../core/widget/buttom.dart';
-import '../../../../../../core/widget/textfield.dart';
+import '../../../../../core/widget/buttom.dart';
+import '../../../../../core/widget/textfield.dart';
 import '../profilecontinue.dart';
 import '../LoginView.dart';
 import 'logincontainuer.dart';

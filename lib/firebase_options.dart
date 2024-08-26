@@ -41,48 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAN4VahO61KMosO1Uzvdgu--nWhmBmpsH8',
-    appId: '1:478707776314:web:ab38d0fa99e47507f4ae03',
-    messagingSenderId: '478707776314',
-    projectId: 'fitnestapp-6d9b4',
-    authDomain: 'fitnestapp-6d9b4.firebaseapp.com',
-    storageBucket: 'fitnestapp-6d9b4.appspot.com',
-    measurementId: 'G-FPGT14HZXL',
+    apiKey: 'AIzaSyCCu3ihIZpU04fa4VtVgK9fY7pUAnFUw80',
+    appId: '1:164333524285:web:56c8d3de76a0bbc407e154',
+    messagingSenderId: '164333524285',
+    projectId: 'test-650ad',
+    authDomain: 'test-650ad.firebaseapp.com',
+    storageBucket: 'test-650ad.appspot.com',
+    measurementId: 'G-24DHR5CEMP',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyASG45Sk0R7vQa8MJeDkDQSj0-2A9E4Txc',
-    appId: '1:478707776314:android:c025eddc2918b954f4ae03',
-    messagingSenderId: '478707776314',
-    projectId: 'fitnestapp-6d9b4',
-    storageBucket: 'fitnestapp-6d9b4.appspot.com',
+    apiKey: 'AIzaSyDkkRx2Mc3h51VjbRaaOUawV3zN-noV4Jk',
+    appId: '1:164333524285:android:59561d3fa4215c4f07e154',
+    messagingSenderId: '164333524285',
+    projectId: 'test-650ad',
+    storageBucket: 'test-650ad.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCUQ-dQtjngs6GoeG0F9MYVr4j2B94C-Po',
-    appId: '1:478707776314:ios:8adaf45d3cd486a9f4ae03',
-    messagingSenderId: '478707776314',
-    projectId: 'fitnestapp-6d9b4',
-    storageBucket: 'fitnestapp-6d9b4.appspot.com',
+    apiKey: 'AIzaSyC7LAVTqXzPiYxsBsa4KAsNfxJ8YURh5kE',
+    appId: '1:164333524285:ios:4bcf7826766a035007e154',
+    messagingSenderId: '164333524285',
+    projectId: 'test-650ad',
+    storageBucket: 'test-650ad.appspot.com',
     iosBundleId: 'com.example.fitnessApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCUQ-dQtjngs6GoeG0F9MYVr4j2B94C-Po',
-    appId: '1:478707776314:ios:8adaf45d3cd486a9f4ae03',
-    messagingSenderId: '478707776314',
-    projectId: 'fitnestapp-6d9b4',
-    storageBucket: 'fitnestapp-6d9b4.appspot.com',
+    apiKey: 'AIzaSyC7LAVTqXzPiYxsBsa4KAsNfxJ8YURh5kE',
+    appId: '1:164333524285:ios:4bcf7826766a035007e154',
+    messagingSenderId: '164333524285',
+    projectId: 'test-650ad',
+    storageBucket: 'test-650ad.appspot.com',
     iosBundleId: 'com.example.fitnessApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAN4VahO61KMosO1Uzvdgu--nWhmBmpsH8',
-    appId: '1:478707776314:web:d59118cbfe36e985f4ae03',
-    messagingSenderId: '478707776314',
-    projectId: 'fitnestapp-6d9b4',
-    authDomain: 'fitnestapp-6d9b4.firebaseapp.com',
-    storageBucket: 'fitnestapp-6d9b4.appspot.com',
-    measurementId: 'G-Y5DHWFKGNG',
+    apiKey: 'AIzaSyCCu3ihIZpU04fa4VtVgK9fY7pUAnFUw80',
+    appId: '1:164333524285:web:3299814fe5f29cc107e154',
+    messagingSenderId: '164333524285',
+    projectId: 'test-650ad',
+    authDomain: 'test-650ad.firebaseapp.com',
+    storageBucket: 'test-650ad.appspot.com',
+    measurementId: 'G-MMCLREL550',
   );
+
 }

@@ -1,7 +1,6 @@
-import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
-import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubitstate.dart';
-import 'package:fitness_app/features/Home/presentation/view/Home_page.dart';
-import 'package:fitness_app/features/exercises/presentation/view/exercisesview.dart';
+import 'package:fitness_app/features/Auth/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
+import 'package:fitness_app/features/Auth/presentation/manager/SIgninAuthCubit/SIgninAuthCubitstate.dart';
+import 'package:fitness_app/features/Home/presentation/manager/cubit/getuserdata_cubit.dart';
 import 'package:fitness_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,13 +8,15 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'widget/completeprofilebody.dart';
 
 class ProfileContinue extends StatelessWidget {
+  final bool isgoogle;
   final String l_name, f_name, email, pass;
   const ProfileContinue(
       {super.key,
       required this.l_name,
       required this.f_name,
       required this.email,
-      required this.pass});
+      required this.pass,
+      this.isgoogle = false});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class ProfileContinue extends StatelessWidget {
               ),
             );
           } else if (state is AuthSuccess) {
+            context.read<GetuserdataCubit>().getuserdata();
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -42,6 +44,7 @@ class ProfileContinue extends StatelessWidget {
           return ModalProgressHUD(
               inAsyncCall: state is AuthLoading ? true : false,
               child: ProfileContinueBody(
+                isgoogle: isgoogle,
                 email: email,
                 f_name: f_name,
                 l_name: l_name,

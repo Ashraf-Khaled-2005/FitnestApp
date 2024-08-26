@@ -2,9 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness_app/features/Auth/data/auth_repo_imlp.dart';
-import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
-import 'package:fitness_app/features/Auth/data/presentation/manager/loginemail_pass_cubit/loginemail_pass_cubit.dart';
-import 'package:fitness_app/features/Auth/data/presentation/view/signup.dart';
+import 'package:fitness_app/features/Auth/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
+import 'package:fitness_app/features/Auth/presentation/manager/cubit/loginwithgoogle_cubit.dart';
+import 'package:fitness_app/features/Auth/presentation/manager/loginemail_pass_cubit/loginemail_pass_cubit.dart';
+import 'package:fitness_app/features/Auth/presentation/view/signup.dart';
+import 'package:fitness_app/features/Home/presentation/manager/cubit/getuserdata_cubit.dart';
 import 'package:fitness_app/features/Home/presentation/view/Home_page.dart';
 import 'package:fitness_app/features/exercises/data/repo/exerciserepoimpl.dart';
 import 'package:fitness_app/features/exercises/presentation/manager/indesesCubit/getexerciseindeses_cubit.dart';
@@ -32,6 +34,12 @@ class FitnessApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AuthCubit(AuthRepoImpl()),
+        ),
+        BlocProvider(
+          create: (context) => GetuserdataCubit(),
+        ),
+        BlocProvider(
+          create: (context) => LoginwithgoogleCubit(AuthRepoImpl()),
         ),
         BlocProvider(
           create: (context) => LoginemailPassCubit(AuthRepoImpl()),

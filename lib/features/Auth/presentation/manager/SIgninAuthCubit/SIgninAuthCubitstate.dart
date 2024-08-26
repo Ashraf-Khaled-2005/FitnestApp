@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/Auth/data/domain/model/userModel.dart';
+import 'package:fitness_app/features/Auth/domain/model/userModel.dart';
 
 abstract class AuthState {}
 

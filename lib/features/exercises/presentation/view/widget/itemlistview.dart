@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/features/exercises/data/model/exercise_model.dart';
 import 'package:fitness_app/features/exercises/presentation/view/exercisescategoryview.dart';
 import 'package:flutter/material.dart';
@@ -71,11 +72,13 @@ class CustomListitemExercises extends StatelessWidget {
               )
             ],
           ),
-          Image.network(
-            items[0].gifUrl!,
+          CachedNetworkImage(
+            imageUrl: items[0].gifUrl!,
             width: 100,
             height: 100,
-          )
+            placeholder: (context, url) => const CircularProgressIndicator(),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ),
         ],
       ),
     );

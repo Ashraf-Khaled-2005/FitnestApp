@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/Auth/data/presentation/view/signup.dart';
+import 'package:fitness_app/features/Auth/presentation/view/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

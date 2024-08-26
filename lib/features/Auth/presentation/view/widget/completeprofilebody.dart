@@ -4,17 +4,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_format_field/date_format_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/core/widget/buttom.dart';
-import 'package:fitness_app/features/Auth/data/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
+import 'package:fitness_app/features/Auth/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
+import 'package:fitness_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../../../../core/utils/Appimages.dart';
-import '../../../../../../core/widget/textfield.dart';
-import '../../../../../onboarding/presentation/view/widget/OnBoardingPageviewItem.dart';
+import '../../../../../core/utils/Appimages.dart';
+import '../../../../../core/widget/textfield.dart';
+import '../../../../onboarding/presentation/view/widget/OnBoardingPageviewItem.dart';
 import 'CustomTitleCompleteProfile.dart';
 
 class ProfileContinueBody extends StatefulWidget {
+  final bool isgoogle;
   final String l_name, f_name, email, pass;
 
   const ProfileContinueBody(
@@ -22,7 +24,8 @@ class ProfileContinueBody extends StatefulWidget {
       required this.l_name,
       required this.f_name,
       required this.email,
-      required this.pass});
+      required this.pass,
+      this.isgoogle = false});
 
   @override
   State<ProfileContinueBody> createState() => _ProfileContinueBodyState();
@@ -170,15 +173,31 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                 log(keyboardHeight.toString());
                 if (key.currentState!.validate()) {
                   key.currentState!.save();
-                  context.read<AuthCubit>().SigninAuth(
-                      email: widget.email,
-                      f_name: widget.f_name,
-                      L_name: widget.l_name,
-                      pass: widget.pass,
-                      gender: _selectedGender,
-                      wight: wight,
-                      hight: height,
-                      date: date);
+                  !widget.isgoogle
+                      ? context.read<AuthCubit>().SigninAuth(
+                          email: widget.email,
+                          f_name: widget.f_name,
+                          L_name: widget.l_name,
+                          pass: widget.pass,
+                          gender: _selectedGender,
+                          wight: wight,
+                          hight: height,
+                          date: date)
+                      : await FirebaseFirestore.instance
+                          .collection('USERS')
+                          .doc((FirebaseAuth.instance.currentUser!.uid))
+                          .set({
+                          'email': widget.email,
+                          'f_name': widget.f_name,
+                          'L_name': widget.l_name,
+                          'id': FirebaseAuth.instance.currentUser!.uid,
+                          'gender': _selectedGender,
+                          'wight': wight,
+                          'hight': height,
+                          'date': date
+                        });
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => AuthStream()));
                 } else {
                   auto = AutovalidateMode.always;
                   setState(() {});
