@@ -57,7 +57,7 @@ class Exerciserepoimple extends ExerciseRepo {
 
       if (result != null) {
         Exercisedone exercise = Exercisedone(
-            instractionlength: result['instractionlength'],
+            instractionlength: result['instractionlength'].toString(),
             category: result['category'],
             name: result['name'],
             image: result['image'],

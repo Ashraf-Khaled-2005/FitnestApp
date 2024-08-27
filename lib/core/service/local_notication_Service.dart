@@ -29,9 +29,10 @@ class NotificationService {
     );
   }
 
-  static void ShowBasicNotification() async {
+  static void ShowBasicNotification(
+      {required String title, required String body}) async {
     AndroidNotificationDetails andriod = AndroidNotificationDetails(
-      sound: RawResourceAndroidNotificationSound('sound.mp4'.split('.').first),
+      sound: RawResourceAndroidNotificationSound('sound.wav'.split('.').first),
       'id 1',
       "basic",
       importance: Importance.max,
@@ -39,7 +40,7 @@ class NotificationService {
       ticker: 'ticker',
     );
     NotificationDetails details = NotificationDetails(android: andriod);
-    await flutterLocalNotificationsPlugin.show(0, "basic", "body", details);
+    await flutterLocalNotificationsPlugin.show(0, title, body, details);
   }
 
   static void ShowReapetNotification() async {
@@ -55,7 +56,12 @@ class NotificationService {
         1, "repeat", "body", RepeatInterval.everyMinute, details);
   }
 
-  static void ShowScheduledNotification() async {
+  static void ShowScheduledNotification(
+      {required String title,
+      required String body,
+      required String time}) async {
+    List<String> Alltime = time.split("/");
+
     AndroidNotificationDetails andriod = const AndroidNotificationDetails(
       'id 3',
       "scheduled",
@@ -74,10 +80,11 @@ class NotificationService {
     log(tz.TZDateTime.now(tz.local).hour.toString());
     await flutterLocalNotificationsPlugin.zonedSchedule(
         2,
-        'scheduled',
-        "body",
-        // tz.TZDateTime(tz.local, 2024, 8, 17, 17, 50),
-        tz.TZDateTime.now(tz.local).add(Duration(seconds: 5)),
+        title,
+        body,
+        tz.TZDateTime(tz.local, int.parse(Alltime[2]), int.parse(Alltime[1]),
+            int.parse(Alltime[0]), 15, 57),
+        // tz.TZDateTime.now(tz.local).add(Duration(seconds: 5)),
         details,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime);

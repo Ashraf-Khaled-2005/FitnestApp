@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitness_app/core/service/local_notication_Service.dart';
 import 'package:fitness_app/core/widget/buttom.dart';
 import 'package:fitness_app/features/Auth/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
 import 'package:fitness_app/features/Home/presentation/manager/cubit/getuserdata_cubit.dart';
@@ -161,16 +162,23 @@ class _ExerciseShowwingbodyState extends State<ExerciseShowwingbody> {
                             id: widget.model.id!,
                             userid:
                                 context.read<GetuserdataCubit>().usermodel.id))
-                        .set({
-                      'instractionlength': widget.model.instructions!.length,
-                      'name': widget.model.name,
-                      'category': widget.model.bodyPart,
-                      'image': widget.model.gifUrl,
-                      'id': uuid,
-                      'exerciseid': widget.model.id,
-                      'indexes': indexs,
-                      'userid': context.read<GetuserdataCubit>().usermodel.id
-                    });
+                        .set(
+                      {
+                        'instractionlength': widget.model.instructions!.length,
+                        'name': widget.model.name,
+                        'category': widget.model.bodyPart,
+                        'image': widget.model.gifUrl,
+                        'id': uuid,
+                        'exerciseid': widget.model.id,
+                        'indexes': indexs,
+                        'userid': context.read<GetuserdataCubit>().usermodel.id
+                      },
+                    );
+                    if (indexs.length == widget.model.instructions!.length)
+                      NotificationService.ShowBasicNotification(
+                          title: "Congratulation You Did it",
+                          body:
+                              "You finish on ${widget.model.bodyPart} Exercise ${widget.model.name}");
 
                     setState(() {
                       isloading = false;
