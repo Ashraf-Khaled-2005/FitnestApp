@@ -19,7 +19,7 @@ class ExerciseShowwing extends StatelessWidget {
             if (state is GetexerciseindesesLoaded) {
             } else if (state is GetexerciseindesesError) {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content: Text("data"),
+                content: Text("Error "),
               ));
             }
           },

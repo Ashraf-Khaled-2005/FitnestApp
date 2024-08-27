@@ -14,7 +14,10 @@ class Exercisescategoryview extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("data"),
+        title: Text(
+          " ${models[0].bodyPart} Exercises",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+        ),
         centerTitle: true,
       ),
       body: ExercisescategoryviewBody(

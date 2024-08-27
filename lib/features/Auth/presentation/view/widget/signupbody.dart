@@ -14,6 +14,8 @@ class SignupBody extends StatefulWidget {
 }
 
 class _SignupBodyState extends State<SignupBody> {
+  bool ispassvis = false;
+  bool ispass = false;
   late String email, pass, f_name, L_name;
   GlobalKey<FormState> key = GlobalKey();
   AutovalidateMode auto = AutovalidateMode.disabled;
@@ -92,6 +94,24 @@ class _SignupBodyState extends State<SignupBody> {
                   height: 15,
                 ),
                 CustomTextField(
+                  suffix: ispassvis
+                      ? IconButton(
+                          onPressed: () {
+                            setState(() {
+                              ispassvis = !ispassvis;
+                              ispass = !ispass;
+                            });
+                          },
+                          icon: Icon(Icons.visibility_off))
+                      : IconButton(
+                          onPressed: () {
+                            setState(() {
+                              ispass = !ispass;
+
+                              ispassvis = !ispassvis;
+                            });
+                          },
+                          icon: Icon(Icons.visibility)),
                   onSaved: (newvalue) {
                     pass = newvalue!;
                   },
@@ -102,7 +122,7 @@ class _SignupBodyState extends State<SignupBody> {
                   },
                   icon: Icons.lock,
                   text: "Password",
-                  pass: true,
+                  pass: !ispass,
                 )
               ],
             ),

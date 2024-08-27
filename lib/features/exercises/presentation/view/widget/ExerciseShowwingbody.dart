@@ -57,7 +57,7 @@ class _ExerciseShowwingbodyState extends State<ExerciseShowwingbody> {
                 color: const Color(0xff6C89B3),
                 image: DecorationImage(
                     image: NetworkImage(widget.model.gifUrl!),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                     opacity: .5),
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(16),
@@ -66,8 +66,8 @@ class _ExerciseShowwingbodyState extends State<ExerciseShowwingbody> {
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              "Jumping Jack",
+            Text(
+              widget.model.name!,
               style: const TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 24,
@@ -104,11 +104,11 @@ class _ExerciseShowwingbodyState extends State<ExerciseShowwingbody> {
                   "How TO do it",
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      fontSize: 24,
+                      fontSize: 20,
                       fontFamily: 'Poppins'),
                 ),
                 Text(
-                  '${widget.model.instructions!.length}  Steps',
+                  '   Reminig ${widget.model.instructions!.length - indexs.length} Steps',
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,

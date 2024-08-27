@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
+  final Widget? suffix;
   final bool pass;
   final void Function(String?) onSaved;
   final String text;
@@ -14,7 +15,8 @@ class CustomTextField extends StatelessWidget {
       this.pass = false,
       required this.validator,
       required this.onSaved,
-      this.keyboardType = TextInputType.text});
+      this.keyboardType = TextInputType.text,
+      this.suffix = null});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class CustomTextField extends StatelessWidget {
           filled: true,
           hintText: text,
           prefixIcon: Icon(icon),
-          suffixIcon: pass ? Icon(Icons.visibility) : null),
+          suffixIcon: suffix),
     );
   }
 }

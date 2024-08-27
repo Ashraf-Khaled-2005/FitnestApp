@@ -53,9 +53,12 @@ class FitnessApp extends StatelessWidget {
               GetexerciseindesesCubit(Exerciserepoimple(dio: Dio())),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: ThemeData(
+          fontFamily: 'Poppins',
+        ),
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: const PaymentPage(),
       ),
     );
   }

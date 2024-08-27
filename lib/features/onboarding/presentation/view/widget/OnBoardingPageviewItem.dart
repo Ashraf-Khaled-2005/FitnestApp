@@ -1,4 +1,5 @@
 import 'package:fitness_app/features/Auth/presentation/view/signup.dart';
+import 'package:fitness_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -27,8 +28,10 @@ class OnBoardingPageviewItem extends StatelessWidget {
                   alignment: Alignment.topRight,
                   child: TextButton(
                       onPressed: () {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => Signup()));
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AuthStream()));
                       },
                       child: Text("Go to Signup")),
                 ),

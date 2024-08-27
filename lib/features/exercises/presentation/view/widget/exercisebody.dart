@@ -13,9 +13,9 @@ class ExercisesViewBody extends StatelessWidget {
       slivers: [
         const SliverAppBar(
           title: Text(
-            "WorkoutTracker",
+            "Workout Tracker",
             style: TextStyle(
-                fontSize: 24, fontWeight: FontWeight.w700, color: Colors.black),
+                fontSize: 22, fontWeight: FontWeight.w700, color: Colors.black),
           ),
           centerTitle: true,
         ),

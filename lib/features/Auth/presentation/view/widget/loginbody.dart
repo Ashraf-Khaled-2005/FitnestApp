@@ -22,6 +22,8 @@ class LoginViewBody extends StatefulWidget {
 }
 
 class _LoginViewBodyState extends State<LoginViewBody> {
+  bool ispassvis = false;
+  bool ispass = false;
   late String email, pass;
   GlobalKey<FormState> key = GlobalKey();
   AutovalidateMode auto = AutovalidateMode.disabled;
@@ -70,6 +72,24 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   height: 15,
                 ),
                 CustomTextField(
+                  suffix: ispassvis
+                      ? IconButton(
+                          onPressed: () {
+                            setState(() {
+                              ispassvis = !ispassvis;
+                              ispass = !ispass;
+                            });
+                          },
+                          icon: Icon(Icons.visibility_off))
+                      : IconButton(
+                          onPressed: () {
+                            setState(() {
+                              ispass = !ispass;
+
+                              ispassvis = !ispassvis;
+                            });
+                          },
+                          icon: Icon(Icons.visibility)),
                   onSaved: (newvalue) {
                     pass = newvalue!;
                   },
@@ -80,7 +100,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   },
                   icon: Icons.lock,
                   text: "Password",
-                  pass: true,
+                  pass: !ispass,
                 )
               ],
             ),

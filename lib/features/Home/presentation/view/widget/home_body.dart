@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widget/buttom.dart';
 import '../../../../Auth/domain/model/userModel.dart';
 import '../../../../exercises/presentation/view/exercisesview.dart';
-import '../../../../exercises/presentation/view/widget/CustomListile.dart';
 import '../../manager/cubit/getuserdata_cubit.dart';
 import 'CustomProfileView.dart';
 import 'CustomUserInfo.dart';
@@ -60,7 +59,11 @@ class HomeBodySuccess extends StatelessWidget {
     return Column(
       children: [
         CustomProfileView(user: user),
+        SizedBox(
+          height: 30,
+        ),
         customButtom(
+          text: "GO to Exercises",
           w: double.infinity,
           ontap: () async {
             Navigator.push(
@@ -68,6 +71,9 @@ class HomeBodySuccess extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const ExercisesView()),
             );
           },
+        ),
+        SizedBox(
+          height: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,6 +91,9 @@ class HomeBodySuccess extends StatelessWidget {
               numinfo: "${2024 - (int.parse(user.date.split('/')[2]))} Year",
             ),
           ],
+        ),
+        SizedBox(
+          height: 20,
         ),
         const Text(
           "Latest Activity",
@@ -106,7 +115,8 @@ class HomeBodySuccess extends StatelessWidget {
 
             if (exercises.isEmpty) {
               return const Center(
-                child: Text("No data yet"),
+                child: Text(
+                    "No Exercises you did it recently Try to go by click The upper Button"),
               );
             }
             return Expanded(
