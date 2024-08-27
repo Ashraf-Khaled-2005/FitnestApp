@@ -51,6 +51,7 @@ class _HomeViewState extends State<HomeView> {
                 if (widget.isgoogle) {
                   final GoogleSignIn _googleSignIn = GoogleSignIn();
                   await _googleSignIn.signOut();
+                  await FirebaseAuth.instance.signOut();
                 } else {
                   await FirebaseAuth.instance.signOut();
                 }

@@ -1,10 +1,13 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../../core/widget/buttom.dart';
 import '../../../../../core/widget/textfield.dart';
 import '../profilecontinue.dart';
 import '../LoginView.dart';
 import 'logincontainuer.dart';
+import 'widgetimage.dart';
 
 class SignupBody extends StatefulWidget {
   const SignupBody({super.key});
@@ -15,6 +18,7 @@ class SignupBody extends StatefulWidget {
 
 class _SignupBodyState extends State<SignupBody> {
   bool ispassvis = false;
+
   bool ispass = false;
   late String email, pass, f_name, L_name;
   GlobalKey<FormState> key = GlobalKey();
@@ -46,6 +50,9 @@ class _SignupBodyState extends State<SignupBody> {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(
+                  height: 30,
+                ),
+                SizedBox(
                   height: 30,
                 ),
                 CustomTextField(
@@ -196,5 +203,15 @@ class _SignupBodyState extends State<SignupBody> {
         )
       ],
     );
+  }
+
+  Future<File?> Pickimage() async {
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      return File(image.path);
+    } else {
+      return null;
+    }
   }
 }

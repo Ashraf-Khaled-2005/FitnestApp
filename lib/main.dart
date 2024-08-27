@@ -5,6 +5,7 @@ import 'package:fitness_app/features/Auth/data/auth_repo_imlp.dart';
 import 'package:fitness_app/features/Auth/presentation/manager/SIgninAuthCubit/SIgninAuthCubit.dart';
 import 'package:fitness_app/features/Auth/presentation/manager/cubit/loginwithgoogle_cubit.dart';
 import 'package:fitness_app/features/Auth/presentation/manager/loginemail_pass_cubit/loginemail_pass_cubit.dart';
+import 'package:fitness_app/features/Auth/presentation/view/LoginView.dart';
 import 'package:fitness_app/features/Auth/presentation/view/signup.dart';
 import 'package:fitness_app/features/Home/presentation/manager/cubit/getuserdata_cubit.dart';
 import 'package:fitness_app/features/Home/presentation/view/Home_page.dart';
@@ -58,7 +59,7 @@ class FitnessApp extends StatelessWidget {
           fontFamily: 'Poppins',
         ),
         debugShowCheckedModeBanner: false,
-        home: const PaymentPage(),
+        home: const Loginview(),
       ),
     );
   }

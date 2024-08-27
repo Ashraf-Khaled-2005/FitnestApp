@@ -151,6 +151,7 @@ class _ExerciseShowwingbodyState extends State<ExerciseShowwingbody> {
           child: isloading
               ? Center(child: CircularProgressIndicator())
               : customButtom(
+                  text: "Save",
                   w: MediaQuery.sizeOf(context).width,
                   ontap: () async {
                     isloading = true;

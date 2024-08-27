@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitness_app/features/Home/presentation/view/Home_page.dart';
 import 'package:fitness_app/features/exercises/data/model/exercisedone.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -95,9 +96,27 @@ class HomeBodySuccess extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        const Text(
-          "Latest Activity",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Latest Activity",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PaymentPage()));
+                },
+                child: Text(
+                  "Best Seller 🛑",
+                  style: TextStyle(
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff92A3FD)),
+                ))
+          ],
         ),
         StreamBuilder(
           stream: FirebaseFirestore.instance
