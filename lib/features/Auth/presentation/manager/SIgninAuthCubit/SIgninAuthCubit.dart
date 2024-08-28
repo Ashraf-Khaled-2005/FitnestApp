@@ -15,6 +15,7 @@ class AuthCubit extends Cubit<AuthState> {
       required String f_name,
       required String L_name,
       required String pass,
+      required String image,
       required String gender,
       required String wight,
       required String hight,
@@ -23,6 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
     var response = await authRepo.signupwithemailandpassword(
         email: email,
         f_name: f_name,
+        image: image,
         L_name: L_name,
         pass: pass,
         gender: gender,
@@ -39,6 +41,7 @@ class AuthCubit extends Cubit<AuthState> {
           .set({
         'email': email,
         'f_name': f_name,
+        'image': image,
         'L_name': L_name,
         'latestExercis': [],
         'id': FirebaseAuth.instance.currentUser!.uid,

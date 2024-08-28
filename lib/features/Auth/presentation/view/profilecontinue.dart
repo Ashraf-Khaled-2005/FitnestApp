@@ -10,12 +10,14 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'widget/completeprofilebody.dart';
 
 class ProfileContinue extends StatelessWidget {
+  final String image;
   final bool isgoogle;
   final String l_name, f_name, email, pass;
   const ProfileContinue(
       {super.key,
       required this.l_name,
       required this.f_name,
+      required this.image,
       required this.email,
       required this.pass,
       this.isgoogle = false});
@@ -45,6 +47,7 @@ class ProfileContinue extends StatelessWidget {
           return ModalProgressHUD(
               inAsyncCall: state is AuthLoading ? true : false,
               child: ProfileContinueBody(
+                image: image,
                 isgoogle: isgoogle,
                 email: email,
                 f_name: f_name,

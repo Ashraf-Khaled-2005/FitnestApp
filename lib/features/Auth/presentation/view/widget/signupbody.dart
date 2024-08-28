@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
+import '../../../../../core/fun/imagepick.dart';
 import '../../../../../core/widget/buttom.dart';
 import '../../../../../core/widget/textfield.dart';
 import '../profilecontinue.dart';
@@ -17,10 +19,11 @@ class SignupBody extends StatefulWidget {
 }
 
 class _SignupBodyState extends State<SignupBody> {
+  File? image;
   bool ispassvis = false;
 
   bool ispass = false;
-  late String email, pass, f_name, L_name;
+  late String email, pass, f_name, L_name, imageurl;
   GlobalKey<FormState> key = GlobalKey();
   AutovalidateMode auto = AutovalidateMode.disabled;
   @override
@@ -51,6 +54,30 @@ class _SignupBodyState extends State<SignupBody> {
                 ),
                 const SizedBox(
                   height: 30,
+                ),
+                Stack(
+                  children: [
+                    ImagePickerWidget(
+                      image: image,
+                    ),
+                    Positioned(
+                      right: -9,
+                      bottom: -10,
+                      child: IconButton(
+                        onPressed: () async {
+                          image = await PickImageGallery();
+                          final uuid = Uuid().v4();
+                          imageurl =
+                              await Getimgaeurl(uuid, image!, 'Userimages');
+                          setState(() {});
+                        },
+                        icon: const Icon(
+                          Icons.add,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
                 SizedBox(
                   height: 30,
@@ -150,6 +177,7 @@ class _SignupBodyState extends State<SignupBody> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ProfileContinue(
+                            image: imageurl,
                             pass: pass,
                             email: email,
                             f_name: f_name,
@@ -212,6 +240,29 @@ class _SignupBodyState extends State<SignupBody> {
       return File(image.path);
     } else {
       return null;
+    }
+  }
+}
+
+class ImagePickerWidget extends StatelessWidget {
+  final File? image;
+  const ImagePickerWidget({
+    super.key,
+    this.image,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (image == null) {
+      return const CircleAvatar(
+        radius: 32,
+        backgroundImage: AssetImage('assets/image/ima.jfif'),
+      );
+    } else {
+      return CircleAvatar(
+        radius: 32,
+        backgroundImage: FileImage(image!),
+      );
     }
   }
 }

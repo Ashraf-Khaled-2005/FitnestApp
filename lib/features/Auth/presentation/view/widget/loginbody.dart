@@ -146,6 +146,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => ProfileContinue(
+                                  image: state.googlesignin!.photoUrl ?? " ",
                                   isgoogle: true,
                                   l_name: "",
                                   f_name: state.googlesignin!.displayName!,

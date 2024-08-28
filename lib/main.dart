@@ -59,7 +59,7 @@ class FitnessApp extends StatelessWidget {
           fontFamily: 'Poppins',
         ),
         debugShowCheckedModeBanner: false,
-        home: const Loginview(),
+        home: const SplashScreen(),
       ),
     );
   }

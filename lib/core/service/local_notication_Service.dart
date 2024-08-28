@@ -83,7 +83,7 @@ class NotificationService {
         title,
         body,
         tz.TZDateTime(tz.local, int.parse(Alltime[2]), int.parse(Alltime[1]),
-            int.parse(Alltime[0]), 15, 57),
+            int.parse(Alltime[0]), 10, 56),
         // tz.TZDateTime.now(tz.local).add(Duration(seconds: 5)),
         details,
         uiLocalNotificationDateInterpretation:

@@ -15,6 +15,7 @@ import '../../../../onboarding/presentation/view/widget/OnBoardingPageviewItem.d
 import 'CustomTitleCompleteProfile.dart';
 
 class ProfileContinueBody extends StatefulWidget {
+  final String image;
   final bool isgoogle;
   final String l_name, f_name, email, pass;
 
@@ -22,6 +23,7 @@ class ProfileContinueBody extends StatefulWidget {
       {super.key,
       required this.l_name,
       required this.f_name,
+      required this.image,
       required this.email,
       required this.pass,
       this.isgoogle = false});
@@ -170,6 +172,7 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                   key.currentState!.save();
                   !(widget.isgoogle)
                       ? await context.read<AuthCubit>().SigninAuth(
+                          image: widget.image,
                           email: widget.email,
                           f_name: widget.f_name,
                           L_name: widget.l_name,
@@ -185,6 +188,7 @@ class _ProfileContinueBodyState extends State<ProfileContinueBody> {
                           'email': widget.email,
                           'f_name': widget.f_name,
                           'L_name': widget.l_name,
+                          'image': widget.image,
                           'id': FirebaseAuth.instance.currentUser!.uid,
                           'gender': _selectedGender,
                           'wight': wight,

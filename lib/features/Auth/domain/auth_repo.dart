@@ -11,6 +11,7 @@ abstract class AuthRepo {
       required String L_name,
       required String pass,
       required String gender,
+      required String image,
       required String wight,
       required String hight,
       required String date});

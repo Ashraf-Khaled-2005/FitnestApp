@@ -12,6 +12,7 @@ class AuthRepoImpl extends AuthRepo {
       required String f_name,
       required String L_name,
       required String pass,
+      required String image,
       required String gender,
       required String wight,
       required String hight,
@@ -22,7 +23,9 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: pass,
       );
+
       return right(Usermodel(
+          image: image,
           f_name: f_name,
           L_name: L_name,
           email: email,

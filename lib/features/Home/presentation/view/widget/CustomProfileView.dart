@@ -12,7 +12,9 @@ class CustomProfileView extends StatelessWidget {
       leading: CircleAvatar(
         radius: 32,
         backgroundColor: Color(0xffE0ECFF),
-        child: Image.asset('assets/image/Vector-Exercises.png'),
+        child: (user.image == " ")
+            ? Image.asset('assets/image/ima.jfif')
+            : Image.network(user.image),
       ),
       title: Text(
         "${user.f_name} ${user.L_name}",
