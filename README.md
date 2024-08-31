@@ -93,4 +93,4 @@ FitnestApp is a comprehensive fitness application offering a variety of features
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/Ashraf-Khaled-2005/FitnestApp.git>
